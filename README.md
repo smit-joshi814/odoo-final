@@ -1,6 +1,6 @@
 # Odoo Combat
 
-Welcome to the Odoo Combat! This repository contains the solution for the hackathon conducted on 29-6-2024, where we address the problem statements provided by the organizers.
+Welcome to the Odoo Combat! This repository contains the solution for the hackathon conducted on 14-7-2024, where we address the problem statements provided by the organizers.
 
 ## Live URL
 **[See Here](https://odoo-combat-latest.onrender.com)**
@@ -29,5 +29,5 @@ Tackling Public Litter: Application for Efficient Garbage Management : Creating 
 
 ## Contributors
 <a href="https://github.com/smit-joshi814/odoo-combat-2024/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=smit-joshi814/odoo-combat-2024&max=4" />
+  <img src="https://contrib.rocks/image?repo=smit-joshi814/odoo-final&max=4" />
 </a>
