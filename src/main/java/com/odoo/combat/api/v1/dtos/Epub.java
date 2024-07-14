@@ -5,5 +5,5 @@ import lombok.Data;
 @Data
 public class Epub {
     private boolean isAvailable;
-
+    private String acsTokenLink;
 }
