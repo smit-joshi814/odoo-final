@@ -62,11 +62,14 @@ Root root = (Root) request.getAttribute("books");
 						<div class="col">
 							<div class="card shadow-sm">
 								<div class="card-body">
-								<img alt="" src="<%=item.getVolumeInfo().getImageLinks()!=null?item.getVolumeInfo().getImageLinks().getThumbnail():"./resources/img/no-img.svg" %>"  class="img-fluid p-2" width="150px">
-									<p class="card-text"><%=item.getVolumeInfo().getDescription() !=null && item.getVolumeInfo().getDescription().length()>100?item.getVolumeInfo().getDescription().substring(1, 100)+"..":item.getVolumeInfo().getDescription()+"" %></p>
-									<div class="d-flex justify-content-between align-items-center">
-									
-									</div>
+									<img alt=""
+										src="<%=item.getVolumeInfo().getImageLinks() != null
+		? item.getVolumeInfo().getImageLinks().getThumbnail()
+		: "./resources/img/no-img.svg"%>"
+										class="img-fluid p-2" width="150px">
+									<p class="card-text"><%=item.getVolumeInfo().getDescription() != null && item.getVolumeInfo().getDescription().length() > 100
+		? item.getVolumeInfo().getDescription().substring(0, 100) + ".."
+		: item.getVolumeInfo().getDescription() + ""%></p>
 								</div>
 							</div>
 						</div>
@@ -76,7 +79,7 @@ Root root = (Root) request.getAttribute("books");
 					</div>
 				</div>
 			</div>
-					</div>
+		</div>
 	</div>
 
 	<!-- Add Books Modal -->
@@ -89,23 +92,23 @@ Root root = (Root) request.getAttribute("books");
 					<button type="button" class="btn-close" data-bs-dismiss="modal"
 						aria-label="Close"></button>
 				</div>
-				<form action="#">
+				<form id="add-books-ajax">
 					<div class="modal-body">
 						<div class="mb-3">
 							<label for="isbn" class="form-label">ISBN: </label> <input
-								type="text" class="form-control" id="isbn"
+								type="text" class="form-control" id="isbn" name="isbn13"
 								placeholder="Enter ISBN">
 						</div>
 						<div class="mb-3">
 							<label for="qty" class="form-label">Quantity: </label> <input
-								type="number" class="form-control" id="qty"
+								type="number" class="form-control" id="qty" name="quantity"
 								placeholder="Add Quantity: ">
 						</div>
 					</div>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-secondary"
 							data-bs-dismiss="modal">Close</button>
-						<button type="button" class="btn btn-primary">Save
+						<button type="submit" class="btn btn-primary">Save
 							changes</button>
 					</div>
 				</form>
@@ -113,38 +116,6 @@ Root root = (Root) request.getAttribute("books");
 		</div>
 	</div>
 
-	<!-- Edit Books -->
-	<div class="modal fade" id="editBooks" tabindex="-1" aria-hidden="true">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h1 class="modal-title fs-5" id="edit_books">Edit Book</h1>
-					<button type="button" class="btn-close" data-bs-dismiss="modal"
-						aria-label="Close"></button>
-				</div>
-				<form action="#">
-					<div class="modal-body">
-						<div class="mb-3">
-							<label for="isbn" class="form-label">ISBN: </label> <input
-								type="text" class="form-control" id="isbn"
-								placeholder="Enter ISBN">
-						</div>
-						<div class="mb-3">
-							<label for="qty" class="form-label">Quantity: </label> <input
-								type="number" class="form-control" id="qty"
-								placeholder="Add Quantity: ">
-						</div>
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-secondary"
-							data-bs-dismiss="modal">Close</button>
-						<button type="button" class="btn btn-primary">Save
-							changes</button>
-					</div>
-				</form>
-			</div>
-		</div>
-	</div>
 
 	<!-- Add Users Modal -->
 	<div class="modal fade" id="addUsers" tabindex="-1"
@@ -196,5 +167,30 @@ Root root = (Root) request.getAttribute("books");
 	<jsp:include page="components/footer.jsp"></jsp:include>
 	<jsp:include page="components/footer-imports.jsp"></jsp:include>
 
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$('#add-books-ajax').on('submit', function(event) {
+				event.preventDefault();
+
+				const formData = {};
+				$(this).serializeArray().forEach(function(item) {
+					formData[item.name] = item.value;
+				});
+
+				$.ajax({
+					url : '/api/inventory',
+					type : 'POST',
+					contentType : 'application/json', // Send data as JSON
+					data : JSON.stringify(formData),
+					success : function(response) {
+						alert("Book Added Successfully");
+					},
+					error : function(xhr, status, error) {
+						alert("Error: " + error);
+					}
+				});
+			});
+		});
+	</script>
 </body>
 </html>
