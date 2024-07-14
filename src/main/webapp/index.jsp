@@ -127,35 +127,35 @@ Root root = (Root) request.getAttribute("books");
 					<button type="button" class="btn-close" data-bs-dismiss="modal"
 						aria-label="Close"></button>
 				</div>
-				<form action="#">
+				<form id="add-user-ajax">
 					<div class="modal-body">
 						<div class="mb-3">
 							<label for="name" class="form-label">Full Name: </label> <input
-								type="text" class="form-control" id="name"
+								type="text" class="form-control" id="name" name="name"
 								placeholder="Enter Full Name">
 						</div>
 						<div class="mb-3">
 							<label for="email" class="form-label">Email: </label> <input
-								type="email" class="form-control" id="email"
+								type="email" class="form-control" id="email" name="email"
 								placeholder="Enter Email: ">
 						</div>
 
 						<div class="mb-3">
 							<label for="password" class="form-label">Password: </label> <input
-								type="password" class="form-control" id="password"
+								type="password" class="form-control" id="password" name="password"
 								placeholder="Enter Password: ">
 						</div>
 
 						<div class="mb-3">
 							<label for="contact" class="form-label">Contact: </label> <input
-								type="text" class="form-control" id="contact"
+								type="text" class="form-control" id="contact" name="phone"
 								placeholder="Enter Contact: ">
 						</div>
 					</div>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-secondary"
 							data-bs-dismiss="modal">Close</button>
-						<button type="button" class="btn btn-primary">Add</button>
+						<button type="submit" class="btn btn-primary">Add</button>
 					</div>
 				</form>
 
@@ -184,6 +184,28 @@ Root root = (Root) request.getAttribute("books");
 					data : JSON.stringify(formData),
 					success : function(response) {
 						alert("Book Added Successfully");
+					},
+					error : function(xhr, status, error) {
+						alert("Error: " + error);
+					}
+				});
+			});
+			
+			$('#add-user-ajax').on('submit', function(event) {
+				event.preventDefault();
+
+				const formData = {};
+				$(this).serializeArray().forEach(function(item) {
+					formData[item.name] = item.value;
+				});
+
+				$.ajax({
+					url : 'api/users/create',
+					type : 'POST',
+					contentType : 'application/json', // Send data as JSON
+					data : JSON.stringify(formData),
+					success : function(response) {
+						alert("User Added Successfully");
 					},
 					error : function(xhr, status, error) {
 						alert("Error: " + error);

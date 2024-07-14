@@ -8,6 +8,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.odoo.combat.entities.Users;
+import com.odoo.combat.entities.constants.UserRoles;
 import com.odoo.combat.repositories.UserRepository;
 import com.odoo.combat.services.UserService;
 
@@ -19,17 +20,17 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public Users createUser(Users user) {
-		Optional<Users> u = userRepository.findByEmail(user.getEmail());
-		if (!u.isEmpty())
-			return null;
 		user.setPassword(new BCryptPasswordEncoder().encode(user.getPassword()));
+		if (user.getRole() == null) {
+			user.setRole(UserRoles.USER);
+		}
 		user.setStatus(Boolean.TRUE);
 		return userRepository.save(user);
 	}
 
 	@Override
 	public Users updateUser(Long userId, Users user) {
-		Users u =userRepository.findById(userId).get();
+		Users u = userRepository.findById(userId).get();
 		u.setEmail(user.getEmail());
 		u.setName(user.getName());
 		u.setPassword(new BCryptPasswordEncoder().encode(user.getPassword()));

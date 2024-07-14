@@ -11,7 +11,7 @@ import com.odoo.combat.entities.Users;
 import com.odoo.combat.services.UserService;
 
 @Controller
-@RequestMapping("/users")
+@RequestMapping("/api/users")
 public class UserController {
 
 	@Autowired
