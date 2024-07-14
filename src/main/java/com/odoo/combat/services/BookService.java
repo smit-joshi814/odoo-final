@@ -9,5 +9,8 @@ public interface BookService {
 	public Root getBookInfoByIsbn(String isbn);
 	
 	public List<Root> getBookInfoByGenres(String Genres);
+	
+	public List<Root> getBookInfoByAuthor(String author);
+
 
 }

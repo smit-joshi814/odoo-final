@@ -31,5 +31,9 @@ public class BookServiceImpl implements BookService {
 	    return restTemplate.getForObject(url, List.class, Root.class); 
 	}
 
-
+	@Override
+	public List<Root> getBookInfoByAuthor(String author) { 
+	    String url = apiUrl + "?q=insubject:" + author; 
+	    return restTemplate.getForObject(url, List.class, Root.class); 
+	}
 }
