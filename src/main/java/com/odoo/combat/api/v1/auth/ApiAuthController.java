@@ -56,7 +56,7 @@ public class ApiAuthController {
 	public ResponseEntity<AuthResponse> registerUser(@RequestBody SignUpRequest signUpRequest) {
 
 		if(userService.createUser(Users.builder().email(signUpRequest.email()).password(signUpRequest.password())
-				.name(signUpRequest.name()).phoneNumber(signUpRequest.phoneNumber()).role(signUpRequest.role())
+				.name(signUpRequest.name()).role(signUpRequest.role())
 				.build()) == null)
 		 		    return new ResponseEntity<>(HttpStatus.ALREADY_REPORTED);
 
