@@ -36,9 +36,9 @@ public class InventoryServiceImpl implements InventoryService {
 		Root book = bookService.getBookInfoByIsbn(isbn);
 		if (Objects.nonNull(book)) {
 			inventory.setIsbn10(
-					book.getItems().getFirst().getVolumeInfo().getIndustryIdentifiers().get(0).getIdentifier());
+					book.getItems().get(0).getVolumeInfo().getIndustryIdentifiers().get(0).getIdentifier());
 			inventory.setIsbn13(
-					book.getItems().getFirst().getVolumeInfo().getIndustryIdentifiers().get(1).getIdentifier());
+					book.getItems().get(0).getVolumeInfo().getIndustryIdentifiers().get(1).getIdentifier());
 		} else {
 			throw new ApiException(new ApiErrorResponse("Invalid ISBN", HttpStatus.NOT_FOUND));
 		}
