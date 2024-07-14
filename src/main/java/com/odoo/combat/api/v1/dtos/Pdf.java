@@ -5,5 +5,6 @@ import lombok.Data;
 @Data
 public class Pdf {
 	private boolean isAvailable;
+    private String acsTokenLink;
 
 }

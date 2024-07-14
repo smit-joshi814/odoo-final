@@ -1,5 +1,7 @@
 package com.odoo.combat.services.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -22,5 +24,12 @@ public class BookServiceImpl implements BookService {
 		String url = apiUrl + "?q=isbn:" + isbn;
 		return restTemplate.getForObject(url, Root.class);
 	}
+
+	@Override
+	public List<Root> getBookInfoByGenres(String genres) { 
+	    String url = apiUrl + "?q=insubject:" + genres; 
+	    return restTemplate.getForObject(url, List.class, Root.class); 
+	}
+
 
 }
