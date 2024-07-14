@@ -13,12 +13,16 @@ import com.odoo.combat.services.BookService;
 @RequestMapping("/books")
 public class BookController {
 
-	
 	@Autowired
-    private BookService bookService;
+	private BookService bookService;
 
-    @GetMapping("/isbn/{isbn}")
-    public Root getBookByIsbn(@PathVariable String isbn) {
-        return bookService.getBookInfoByIsbn(isbn);
-    }
+	@GetMapping("/isbn/{isbn}")
+	public Root getBookByIsbn(@PathVariable String isbn) {
+		return bookService.getBookInfoByIsbn(isbn);
+	}
+
+	@GetMapping("/search/{search}")
+	public Root getBookBySearch(@PathVariable String search) {
+		return bookService.getBookInfoByIsbn(search);
+	}
 }

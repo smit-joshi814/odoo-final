@@ -19,7 +19,7 @@ import com.odoo.combat.services.UserService;
 
 @RestController
 @RequestMapping("api/v1/users")
-public class UserController {
+public class UserControllerAPI {
 
     @Autowired
     private UserService userService;

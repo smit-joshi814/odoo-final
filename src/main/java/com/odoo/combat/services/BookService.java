@@ -11,6 +11,8 @@ public interface BookService {
 	public List<Root> getBookInfoByGenres(String Genres);
 	
 	public List<Root> getBookInfoByAuthor(String author);
+	
+	
 
 
 }
