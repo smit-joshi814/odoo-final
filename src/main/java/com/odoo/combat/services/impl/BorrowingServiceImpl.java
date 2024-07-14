@@ -37,10 +37,14 @@ public class BorrowingServiceImpl implements BorrowingService {
 			Inventory inventory = inventoryOptional.get();
 
 			Borrowing borrowing = new Borrowing();
+			inventory.setQuantity(inventory.getQuantity() - 1);
+
 			borrowing.setUser(user);
 			borrowing.setInventory(inventory);
 			borrowing.setBorrowDate(new Date());
 			borrowing.setDueDate(calculateDueDate(new Date())); // Example due date calculation
+
+			inventoryRepository.save(inventory);
 
 			return borrowingRepository.save(borrowing);
 		} else {
@@ -54,6 +58,9 @@ public class BorrowingServiceImpl implements BorrowingService {
 		Optional<Borrowing> borrowingOptional = borrowingRepository.findById(borrowingId);
 		if (borrowingOptional.isPresent()) {
 			Borrowing borrowing = borrowingOptional.get();
+			Inventory inventory = inventoryRepository.findById(borrowing.getInventory().getId()).get();
+
+			inventory.setQuantity(inventory.getQuantity() + 1);
 			borrowing.setReturnDate(new Date());
 			calculateLateFees(borrowingId);
 			return borrowingRepository.save(borrowing);
