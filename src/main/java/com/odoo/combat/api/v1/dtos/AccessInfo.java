@@ -4,15 +4,15 @@ import lombok.Data;
 
 @Data
 public class AccessInfo {
-    public String country;
-    public String viewability;
-    public boolean embeddable;
-    public boolean publicDomain;
-    public String textToSpeechPermission;
-    public Boolean isEpubAvailable;
-    public Boolean isPdfAvailable;
-    public String webReaderLink;
-    public String accessViewStatus;
-    public boolean quoteSharingAllowed;
+    private String country;
+    private String viewability;
+    private boolean embeddable;
+    private boolean publicDomain;
+    private String textToSpeechPermission;
+    private Epub epub;
+    private Pdf pdf;
+    private String webReaderLink;
+    private String accessViewStatus;
+    private boolean quoteSharingAllowed;
 }
 
