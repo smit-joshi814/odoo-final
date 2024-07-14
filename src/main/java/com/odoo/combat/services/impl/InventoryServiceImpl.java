@@ -74,4 +74,6 @@ public class InventoryServiceImpl implements InventoryService {
 	public List<Inventory> getAllInventories() {
 		return inventoryRepository.findAll();
 	}
+	
+	
 }
