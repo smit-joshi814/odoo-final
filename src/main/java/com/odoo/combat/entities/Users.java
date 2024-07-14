@@ -31,8 +31,6 @@ public class Users {
 	private String email;
 
 	private String password;
-	
-	private String phoneNumber;
 
 	private Boolean status;
 
