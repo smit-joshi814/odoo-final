@@ -3,9 +3,9 @@ package com.odoo.combat.services.impl;
 import com.odoo.combat.entities.Borrowing;
 import com.odoo.combat.entities.Inventory;
 import com.odoo.combat.entities.Users;
+import com.odoo.combat.repositories.BorrowingRepository;
 import com.odoo.combat.repositories.InventoryRepository;
 import com.odoo.combat.repositories.UserRepository;
-import com.odoo.combat.services.BorrowingRepository;
 import com.odoo.combat.services.BorrowingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -54,7 +54,7 @@ public class BorrowingServiceImpl implements BorrowingService {
 	}
 
 	@Override
-	public Borrowing returnBook(Integer borrowingId) {
+	public Borrowing returnBook(Long borrowingId) {
 		Optional<Borrowing> borrowingOptional = borrowingRepository.findById(borrowingId);
 		if (borrowingOptional.isPresent()) {
 			Borrowing borrowing = borrowingOptional.get();
@@ -81,7 +81,7 @@ public class BorrowingServiceImpl implements BorrowingService {
 	}
 
 	@Override
-	public void calculateLateFees(Integer borrowingId) {
+	public void calculateLateFees(Long borrowingId) {
 		Optional<Borrowing> borrowingOptional = borrowingRepository.findById(borrowingId);
 		if (borrowingOptional.isPresent()) {
 			Borrowing borrowing = borrowingOptional.get();

@@ -26,4 +26,9 @@ public class BookController {
 	public Root getBookBySearch(@PathVariable String search) {
 		return bookService.getBookInfoBySearch(search);
 	}
+	
+	@GetMapping
+	public Root getSavedBooks() {
+		return bookService.getAllBooks();
+	}
 }

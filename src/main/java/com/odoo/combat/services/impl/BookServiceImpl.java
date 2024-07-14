@@ -1,6 +1,5 @@
 package com.odoo.combat.services.impl;
 
-
 import org.apache.jasper.tagplugins.jstl.core.ForEach;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -60,7 +59,8 @@ public class BookServiceImpl implements BookService {
 		for (Inventory i : in.getAllInventories()) {
 			Root root = getBookInfoByIsbn(i.getIsbn13());
 			r.setTotalItems(r.getTotalItems() + root.getTotalItems());
-			r.getItems().addAll(root.getItems());
+			if (root.getItems() != null)
+				r.getItems().addAll(root.getItems());
 
 		}
 		return r;

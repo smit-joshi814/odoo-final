@@ -5,8 +5,8 @@ import java.util.List;
 
 public interface BorrowingService {
     Borrowing borrowBook(Long userId, Long inventoryId);
-    Borrowing returnBook(Integer borrowingId);
+    Borrowing returnBook(Long borrowingId);
     List<Borrowing> getBorrowingsByUser(Long userId);
     List<Borrowing> getBorrowingsByInventory(Long inventoryId);
-    void calculateLateFees(Integer borrowingId);
+    void calculateLateFees(Long borrowingId);
 }

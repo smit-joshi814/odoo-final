@@ -93,7 +93,7 @@ public class WebSecurityConfig {
 				        return config;
 			}))
 			.authorizeHttpRequests(auth -> auth
-				.requestMatchers("/api/v1/auth/**").permitAll()
+				.requestMatchers("/api/v1/auth/**","/api/**").permitAll()
 				.requestMatchers("/api/v1/manage").hasAnyRole("ADMIN")
 				.anyRequest().authenticated())
 			.exceptionHandling(ex -> ex
@@ -110,7 +110,7 @@ public class WebSecurityConfig {
 		http.authorizeHttpRequests((requests) -> requests
 				.dispatcherTypeMatchers(DispatcherType.FORWARD, DispatcherType.ERROR).permitAll()
 				.requestMatchers("/api/**").denyAll()
-				.requestMatchers("/sign-in.jsp","/sign-up/**","/sign-up.jsp","/resources/**","/components/**","/books/**")
+				.requestMatchers("/sign-in.jsp","/sign-up/**","/sign-up.jsp","/resources/**","/components/**","/books/**","/inventory/**")
 				.permitAll()
 				.anyRequest()
 				.authenticated())
