@@ -24,13 +24,13 @@ public class BookServiceImpl implements BookService {
 		String url = apiUrl + "?q=isbn:" + isbn;
 		return restTemplate.getForObject(url, Root.class);
 	}
-	
+
 	@Override
-	public List<Root> getBookInfoBySearch(String search) {
+	public Root getBookInfoBySearch(String search) {
 		String url = apiUrl + "?q=	:" + search;
-	    return restTemplate.getForObject(url, List.class, Root.class); 
+		return restTemplate.getForObject(url, Root.class);
 	}
-	
+
 	@Override
 	public Root getBookInfoByBookName(String bookname) {
 		String url = apiUrl + "?q=title:" + bookname;
@@ -38,16 +38,15 @@ public class BookServiceImpl implements BookService {
 	}
 
 	@Override
-	public List<Root> getBookInfoByGenres(String genres) { 
-	    String url = apiUrl + "?q=categories:" + genres; 
-	    return restTemplate.getForObject(url, List.class, Root.class); 
+	public Root getBookInfoByGenres(String genres) {
+		String url = apiUrl + "?q=categories:" + genres;
+		return restTemplate.getForObject(url, Root.class);
 	}
 
 	@Override
-	public List<Root> getBookInfoByAuthor(String author) { 
-	    String url = apiUrl + "?q=authors:" + author; 
-	    return restTemplate.getForObject(url, List.class, Root.class); 
+	public Root getBookInfoByAuthor(String author) {
+		String url = apiUrl + "?q=authors:" + author;
+		return restTemplate.getForObject(url, Root.class);
 	}
-	
-	
+
 }
