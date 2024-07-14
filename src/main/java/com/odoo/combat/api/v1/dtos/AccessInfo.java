@@ -1,5 +1,8 @@
 package com.odoo.combat.api.v1.dtos;
 
+import lombok.Data;
+
+@Data
 public class AccessInfo {
     public String country;
     public String viewability;
