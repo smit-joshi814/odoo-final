@@ -15,6 +15,9 @@ public interface BookService {
 	
 	public Root getBookInfoByAuthor(String author);
 	
+	public Root getAllBooks();
+
+	
 	
 
 
