@@ -3,16 +3,14 @@
 		<div class="row text-center align-items-center flex-row-reverse">
 			<div class="col-lg-auto ms-lg-auto">
 				<ul class="list-inline list-inline-dots mb-0">
-					<li class="list-inline-item"><a href="https://documenter.getpostman.com/view/27911410/2sA2xcbb4T" target="_blank"
-						class="link-secondary" rel="noopener">Documentation</a></li>
 				</ul>
 			</div>
 			<div class="col-12 col-lg-auto mt-3 mt-lg-0">
 				<ul class="list-inline list-inline-dots mb-0">
-					<li class="list-inline-item">Copyright &copy; 2024 <a href="."
-						class="link-secondary">Wedding Planning System</a>.
+					<li class="list-inline-item">Copyright &copy; 2023 <a href="."
+						class="link-secondary">Public Library Management System</a>. All
+						rights reserved.
 					</li>
-					<li class="list-inline-item">All rights reserved.</li>
 				</ul>
 			</div>
 		</div>

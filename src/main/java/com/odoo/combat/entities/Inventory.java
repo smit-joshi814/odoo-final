@@ -26,6 +26,8 @@ public class Inventory {
 	private String isbn10;
 	private String isbn13;
 	private Integer quantity;
+	@Builder.Default
+	private Boolean isApproved=false;
 
 	@CreationTimestamp
 	private LocalDateTime createdAt;

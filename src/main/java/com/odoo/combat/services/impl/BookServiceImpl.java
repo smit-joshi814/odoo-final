@@ -1,5 +1,7 @@
 package com.odoo.combat.services.impl;
 
+import java.util.ArrayList;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -54,13 +56,14 @@ public class BookServiceImpl implements BookService {
 	@Override
 	public Root getAllBooks() {
 		Root r = new Root();
+		r.setItems(new ArrayList<>());
 		r.setKind("");
 		for (Inventory i : in.getAllInventories()) {
-			Root root = getBookInfoByIsbn(i.getIsbn13());
+			Root root = getBookInfoByIsbn(i.getIsbn10());
 			r.setTotalItems(r.getTotalItems() + root.getTotalItems());
-			if (root.getItems() != null)
-				r.getItems().addAll(root.getItems());
-
+			root.getItems().get(0).setId(i.getId().toString());
+			root.getItems().get(0).setQuantity(i.getQuantity());
+			r.getItems().addAll(root.getItems());
 		}
 		return r;
 	}

@@ -12,4 +12,5 @@ public class Item {
 	   private SaleInfo saleInfo;
 	   private AccessInfo accessInfo;
 	   private SearchInfo searchInfo;
+	   private Integer quantity=0;
 }

@@ -55,7 +55,7 @@ public class ApiAuthController {
 	@PostMapping("/signup")
 	public ResponseEntity<AuthResponse> registerUser(@RequestBody SignUpRequest signUpRequest) {
 
-		if(userService.createUser(Users.builder().email(signUpRequest.email()).password(signUpRequest.password())
+		if(userService.createUser(Users.builder().email(signUpRequest.email()).phone(signUpRequest.phoneNumber()).password(signUpRequest.password())
 				.name(signUpRequest.name()).role(signUpRequest.role())
 				.build()) == null)
 		 		    return new ResponseEntity<>(HttpStatus.ALREADY_REPORTED);
