@@ -20,7 +20,7 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public Users createUser(Users user) {
 		Optional<Users> u = userRepository.findByEmail(user.getEmail());
-		if(!u.isEmpty())
+		if (!u.isEmpty())
 			return null;
 		user.setPassword(new BCryptPasswordEncoder().encode(user.getPassword()));
 		user.setStatus(Boolean.TRUE);
@@ -29,8 +29,11 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public Users updateUser(Long userId, Users user) {
-		// TODO: Implement Update Method
-		return null;
+		Users u =userRepository.findById(userId).get();
+		u.setEmail(user.getEmail());
+		u.setName(user.getName());
+		u.setPassword(new BCryptPasswordEncoder().encode(user.getPassword()));
+		return userRepository.save(u);
 	}
 
 	@Override
